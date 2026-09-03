@@ -1,0 +1,35 @@
+# Monte Carlo QCM LOD Simulation Configuration
+# This file controls the datasets, metadata, and which LOD methods are executed.
+
+dataset:
+  # Path to the input dataset containing the QCM sweeps
+  path: "data/data4/G_data.txt"
+  # Define which rows represent the blank baseline (e.g., start: 0, end: 10 for first 10 rows)
+  baseline_start: 0
+  baseline_end: 10
+
+metadata:
+  # Fluid type for the experiment (used in plot titles/labels)
+  fluid_type: "Glycerol in Water"
+  # Maximum concentration of the analyte (used to scale sensitivity)
+  max_concentration: 5.0
+  # Concentration unit (e.g., '% v/v', 'nM', 'mg/mL')
+  concentration_unit: "% v/v"
+  # Target analyte being detected
+  analyte: "Glycerol"
+  # Signal label for the Y-axis on Method 2 (e.g., "Conductance G", "Impedance Z", "Impedance Phase Angle Z") (ignore if Method 2 is false)
+  signal_label: "Conductance G"
+
+simulation:
+  # Number of Monte Carlo iterations for baseline noise propagation
+  mc_samples: 10000
+
+lod_methods:
+  # Method 1: Univariate Calibration LOD
+  run_univariate: true
+
+  # Method 2: Net Analyte Signal (NAS) Multivariate LOD
+  run_nas: true
+
+  # Method 3: Predictive LOD
+  run_predictive: true
